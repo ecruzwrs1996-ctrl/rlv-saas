@@ -34,6 +34,9 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'jwtAuth' => \App\Filters\JWTAuthFilter::class,
+        'role' => \App\Filters\RoleFilter::class,
+       /* 'corsFilter' => \App\Filters\CorsFilter::class,*/
     ];
 
     /**
@@ -51,7 +54,7 @@ class Filters extends BaseFilters
      */
     public array $required = [
         'before' => [
-            'forcehttps', // Force Global Secure Requests
+          //desactivar temporalmente solo localhost ECR  'forcehttps', // Force Global Secure Requests
             'pagecache',  // Web Page Caching
         ],
         'after' => [
@@ -72,6 +75,8 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
+              //'corsFilter',
+
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
@@ -106,5 +111,14 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [];
+    public array $filters = [
+
+    'cors' => [
+
+        'before' => [
+
+            'api/*'
+        ]
+    ]
+];
 }
