@@ -79,14 +79,14 @@
                         class="edit-btn"
                         @click="$emit('edit', user)"
                     >
-                        Editar
+                        Edit
                     </button>
 
                     <button
                         class="delete-btn"
                         @click="$emit('delete', user)"
                     >
-                        Eliminar
+                        Delete
                     </button>
 
                 </td>

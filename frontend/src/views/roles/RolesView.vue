@@ -10,7 +10,7 @@
 
             <h1>
 
-                General Condigurations
+               Set Up General
 
             </h1>
 

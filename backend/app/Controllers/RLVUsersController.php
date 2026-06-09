@@ -135,7 +135,7 @@ class RLVUsersController extends BaseApiController
          */
         $this->audit(
             'CREATE',
-            'rlv_users',
+            'RLV_Users',
             "Usuario creado" . $data['username']
         );
 
@@ -184,7 +184,7 @@ class RLVUsersController extends BaseApiController
          */
         $this->audit(
             'UPDATE',
-            'rlv_users',
+            'RLV_Users',
             "Usuario actualizado: {$user['username']}"
         );
 
@@ -216,7 +216,7 @@ class RLVUsersController extends BaseApiController
          */
         $this->audit(
             'DELETE',
-            'rlv_users',
+            'RLV_Users',
             "Usuario eliminado: {$user['username']}"
         );
 

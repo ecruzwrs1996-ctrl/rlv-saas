@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class RLVUsersSessionsModel extends Model
 {
-    protected $table = 'rlv_users_sessions';
+    protected $table = 'RLV_Users_Sessions';
 
     protected $primaryKey = 'Id_usr_session';
 

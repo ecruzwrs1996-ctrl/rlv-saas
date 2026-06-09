@@ -32,29 +32,29 @@ class RLVActiveUsersRepository
         return $this->model
 
             ->select('
-                rlv_users_sessions.Id_usr_session,
-                rlv_users_sessions.login_at,
+                RLV_Users_Sessions.Id_usr_session,
+                RLV_Users_Sessions.login_at,
 
-                rlv_users.Id_user,
-                rlv_users.username,
-                rlv_users.name,
-                rlv_users.email,
-                rlv_users.Role_id
+                RLV_Users.Id_user,
+                RLV_Users.username,
+                RLV_Users.name,
+                RLV_Users.email,
+                RLV_Users.Role_id
             ')
 
             ->join(
-                'rlv_users',
-                'rlv_users.Id_user =
-                rlv_users_sessions.Id_user'
+                'RLV_Users',
+                'RLV_Users.Id_user =
+                RLV_Users_Sessions.Id_user'
             )
 
             ->where(
-                'rlv_users_sessions.is_active',
+                'RLV_Users_Sessions.is_active',
                 1
             )
 
             ->orderBy(
-                'rlv_users_sessions.login_at',
+                'RLV_Users_Sessions.login_at',
                 'DESC'
             )
 
@@ -70,28 +70,28 @@ public function getTodayLoginsChart()
     return $this->model
 
         ->select('
-            rlv_users.username,
+            RLV_Users.username,
             COUNT(*) as total_logins
         ')
 
         ->join(
-            'rlv_users',
-            'rlv_users.Id_user =
-            rlv_users_sessions.Id_user'
+            'RLV_Users',
+            'RLV_Users.Id_user =
+            RLV_Users_Sessions.Id_user'
         )
 
         ->where(
-            'rlv_users_sessions.login_at >=',
+            'RLV_Users_Sessions.login_at >=',
             date('Y-m-d 00:00:00')
         )
 
         ->where(
-            'rlv_users_sessions.login_at <=',
+            'RLV_Users_Sessions.login_at <=',
             date('Y-m-d 23:59:59')
         )
 
         ->groupBy(
-            'rlv_users.username'
+            'RLV_Users.username'
         )
 
         ->findAll();
@@ -231,9 +231,9 @@ public function getTodayActivityTimeline()
     return $this->model
 
         ->select('
-            rlv_users.username,
+            RLV_Users.username,
 
-            COUNT(rlv_users_sessions.Id_usr_session)
+            COUNT(RLV_Users_Sessions.Id_usr_session)
                 as total_sessions,
 
             SUM(
@@ -263,9 +263,9 @@ public function getTodayActivityTimeline()
         ')
 
         ->join(
-            'rlv_users',
-            'rlv_users.Id_user =
-            rlv_users_sessions.Id_user'
+            'RLV_Users',
+            'RLV_Users.Id_user =
+            RLV_Users_Sessions.Id_user'
         )
 
         ->where(
@@ -279,7 +279,7 @@ public function getTodayActivityTimeline()
         )
 
         ->groupBy(
-            'rlv_users.username'
+            'RLV_Users.username'
         )
 
         ->findAll();

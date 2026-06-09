@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class RLVSystemDebugsModel extends Model
 {
-    protected $table            = 'rlvsystemdebugs';
+    protected $table            = 'RLV_System_Debugs';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

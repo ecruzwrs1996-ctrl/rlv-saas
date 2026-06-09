@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class RLVAuditActionsModel extends Model
 {
-    protected $table            = 'rlv_audit_actions';
+    protected $table            = 'RLV_Audit_Actions';
     protected $primaryKey       =  'Id_aud_action';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class RLVAuditLogsModel extends Model
 {
-    protected $table            = 'rlv_audit_logs';
+    protected $table            = 'RLV_Audit_Logs';
 
     protected $primaryKey       = 'Id_log';
 

@@ -23,16 +23,16 @@ class RLVDirectoryRepository
             $this->model
 
                 ->select('
-                    rlv_residents.*,
+                    RLV_Residents.*,
 
-                    rlv_streets.name
+                    RLV_Streets.name
                     as street_name
                 ')
 
                 ->join(
-                    'rlv_streets',
-                    'rlv_streets.Id_street =
-                    rlv_residents.Id_street',
+                    'RLV_Streets',
+                    'RLV_Streets.Id_street =
+                    RLV_Residents.Id_street',
                     'left'
                 );
 
@@ -44,7 +44,7 @@ class RLVDirectoryRepository
 
             $builder->like(
 
-                'rlv_residents.owner_name',
+                'RLV_Residents.owner_name',
 
                 $filters['owner_name']
             );
@@ -54,7 +54,7 @@ class RLVDirectoryRepository
 
             $builder->like(
 
-                'rlv_residents.resident_name',
+                'RLV_Residents.resident_name',
 
                 $filters['resident_name']
             );
@@ -64,7 +64,7 @@ class RLVDirectoryRepository
 
             $builder->like(
 
-                'rlv_residents.lot',
+                'RLV_Residents.lot',
 
                 $filters['lot']
             );
@@ -74,7 +74,7 @@ class RLVDirectoryRepository
 
             $builder->like(
 
-                'rlv_residents.block',
+                'RLV_Residents.block',
 
                 $filters['block']
             );
@@ -88,7 +88,7 @@ class RLVDirectoryRepository
 
             $builder->where(
 
-                'rlv_residents.Id_street',
+                'RLV_Residents.Id_street',
 
                 $filters['Id_street']
             );
@@ -102,7 +102,7 @@ class RLVDirectoryRepository
 
             $builder->where(
 
-                'rlv_residents.status',
+                'RLV_Residents.status',
 
                 $filters['status']
             );
@@ -190,7 +190,7 @@ class RLVDirectoryRepository
             $builder
 
                 ->orderBy(
-                    'rlv_residents.Id_resident',
+                    'RLV_Residents.Id_resident',
                     'DESC'
                 )
 
@@ -239,7 +239,7 @@ class RLVDirectoryRepository
             $this->buildQuery($filters)
 
                 ->orderBy(
-                    'rlv_residents.Id_resident',
+                    'RLV_Residents.Id_resident',
                     'DESC'
                 )
 

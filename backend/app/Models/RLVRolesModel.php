@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class RLVRolesModel extends Model
 {
-    protected $table = 'rlv_roles';
+    protected $table = 'RLV_Roles';
 
     protected $primaryKey = 'Id_role';
 

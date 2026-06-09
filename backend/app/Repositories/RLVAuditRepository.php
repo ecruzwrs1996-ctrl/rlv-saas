@@ -27,7 +27,7 @@ public function getAuditLogs(
      * Base query
      */
     $builder = $this->db->table(
-        'rlv_users_sessions us'
+        'RLV_Users_Sessions us'
     );
 
     /**
@@ -61,25 +61,25 @@ public function getAuditLogs(
      * Joins
      */
     $builder->join(
-        'rlv_audit_logs al',
+        'RLV_Audit_Logs al',
         'al.Id_usr_session = us.Id_usr_session',
         'left'
     );
 
     $builder->join(
-        'rlv_audit_actions aa',
+        'RLV_Audit_Actions aa',
         'aa.Id_log = al.Id_log',
         'left'
     );
 
     $builder->join(
-        'rlv_users u',
+        'RLV_Users u',
         'u.Id_user = us.Id_user',
         'left'
     );
 
     $builder->join(
-        'rlv_roles r',
+        'RLV_Roles r',
         'r.Id_role = u.Role_id',
         'left'
     );
@@ -257,22 +257,22 @@ public function getAuditLogs(
         return [
 
             'audit_actions' => $this->db
-                ->table('rlv_audit_actions')
+                ->table('RLV_Audit_Actions')
                 ->get()
                 ->getResultArray(),
 
             'audit_logs' => $this->db
-                ->table('rlv_audit_logs')
+                ->table('RLV_Audit_Logs')
                 ->get()
                 ->getResultArray(),
 
             'users_sessions' => $this->db
-                ->table('rlv_users_sessions')
+                ->table('RLV_Users_Sessions')
                 ->get()
                 ->getResultArray(),
 
             'users' => $this->db
-                ->table('rlv_users')
+                ->table('RLV_Users')
                 ->get()
                 ->getResultArray()
         ];
@@ -300,7 +300,7 @@ public function getAuditLogs(
          * Eliminar audit actions
          */
         $this->db
-            ->table('rlv_audit_actions')
+            ->table('RLV_Audit_Actions')
             ->where(
                 'created_at <',
                 $purgeDate . ' 00:00:00'
@@ -311,7 +311,7 @@ public function getAuditLogs(
          * Eliminar audit logs
          */
         $this->db
-            ->table('rlv_audit_logs')
+            ->table('RLV_Audit_Logs')
             ->where(
                 'created_at <',
                 $purgeDate . ' 00:00:00'
@@ -322,7 +322,7 @@ public function getAuditLogs(
          * Eliminar sesiones antiguas
          */
         $this->db
-            ->table('rlv_users_sessions')
+            ->table('RLV_Users_Sessions')
             ->where(
                 'login_at <',
                 $purgeDate . ' 00:00:00'
@@ -348,7 +348,7 @@ public function getAuditLogs(
 
         return $this->db
 
-            ->table('rlv_audit_logs')
+            ->table('RLV_Audit_Logs')
 
             ->where(
                 'Id_usr_session',
@@ -371,7 +371,7 @@ public function getAuditLogs(
     public function getAuditExportData(): array
     {
         return $this->db
-            ->table('rlv_audit_actions aa')
+            ->table('RLV_Audit_Actions aa')
 
             ->select('
                 u.name,
@@ -391,25 +391,25 @@ public function getAuditLogs(
             ')
 
             ->join(
-                'rlv_audit_logs al',
+                'RLV_Audit_Logs al',
                 'al.Id_log = aa.Id_log',
                 'left'
             )
 
             ->join(
-                'rlv_users_sessions us',
+                'RLV_Users_Sessions us',
                 'us.Id_usr_session = al.Id_usr_session',
                 'left'
             )
 
             ->join(
-                'rlv_users u',
+                'RLV_Users u',
                 'u.Id_user = al.Id_user',
                 'left'
             )
 
             ->join(
-                'rlv_roles r',
+                'RLV_Roles r',
                 'r.Id_role = u.Role_id',
                 'left'
             )
@@ -431,18 +431,18 @@ public function getAuditLogs(
     {
         return [
 
-            'rlv_users_sessions' => $this->db
-                ->table('rlv_users_sessions')
+            'RLV_Users_Sessions' => $this->db
+                ->table('RLV_Users_Sessions')
                 ->get()
                 ->getResultArray(),
 
-            'rlv_audit_logs' => $this->db
-                ->table('rlv_audit_logs')
+            'RLV_Audit_Logs' => $this->db
+                ->table('RLV_Audit_Logs')
                 ->get()
                 ->getResultArray(),
 
-            'rlv_audit_actions' => $this->db
-                ->table('rlv_audit_actions')
+            'RLV_Audit_Actions' => $this->db
+                ->table('RLV_Audit_Actions')
                 ->get()
                 ->getResultArray()
         ];

@@ -159,7 +159,7 @@
             @click="applyFilters"
         >
 
-            Buscar
+            Search
 
         </button>
 
@@ -168,7 +168,7 @@
             @click="clearFilters"
         >
 
-            Limpiar
+            Clean
 
         </button>
 

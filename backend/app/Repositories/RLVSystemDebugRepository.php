@@ -19,7 +19,7 @@ class RLVSystemDebugRepository
     public function create(array $data): bool
     {
         return $this->db
-            ->table('rlv_system_debugs')
+            ->table('RLV_System_Debugs')
             ->insert($data);
     }
 }

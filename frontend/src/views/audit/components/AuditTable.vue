@@ -11,7 +11,7 @@
             @click="$emit('export')"
         >
 
-            Exportar Auditoría
+            Audit Export
 
         </button>
 
@@ -23,7 +23,7 @@
             @click="handlePurge"
         >
 
-            Proceso Depuración Auditoría
+            Audit Purgin Process
 
         </button>
 

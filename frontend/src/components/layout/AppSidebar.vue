@@ -220,7 +220,7 @@
 
     <span v-if="!collapsed">
 
-        Configuraciones
+        Set up
 
     </span>
 

@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class RLVPermissionsModel extends Model
 {
-    protected $table            = 'rlvpermissions';
+    protected $table            = 'RLV_Permissions';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

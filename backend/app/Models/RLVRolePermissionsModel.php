@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class RLVRolePermissionsModel extends Model
 {
-    protected $table            = 'rlvrolepermissions';
+    protected $table            = 'RLV_Role_Permissions';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

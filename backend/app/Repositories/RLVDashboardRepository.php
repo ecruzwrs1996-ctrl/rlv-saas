@@ -26,7 +26,7 @@ class RLVDashboardRepository
     public function totalResidents(): int
     {
         return $this->db
-            ->table('rlv_residents')
+            ->table('RLV_Residents')
             ->where('deleted_at', null)
             ->countAllResults();
     }
@@ -37,7 +37,7 @@ class RLVDashboardRepository
     public function totalStreets(): int
     {
         return $this->db
-            ->table('rlv_streets')
+            ->table('RLV_Streets')
             ->where('deleted_at', null)
             ->countAllResults();
     }
@@ -48,7 +48,7 @@ class RLVDashboardRepository
     public function totalUsers(): int
     {
         return $this->db
-            ->table('rlv_users')
+            ->table('RLV_Users')
             ->where('deleted_at', null)
             ->countAllResults();
     }
@@ -59,7 +59,7 @@ class RLVDashboardRepository
     public function activeGuards(): int
     {
         return $this->db
-            ->table('rlv_users')
+            ->table('RLV_Users')
             ->where('Role_id', 3)
             ->where('status', 'ACTIVE')
             ->where('deleted_at', null)
@@ -75,7 +75,7 @@ class RLVDashboardRepository
          * SYS
          */
         $sys = $this->db
-            ->table('rlv_users')
+            ->table('RLV_Users')
             ->where('Role_id', 1)
             ->where('status', 'ACTIVE')
             ->where('deleted_at', null)
@@ -85,7 +85,7 @@ class RLVDashboardRepository
          * ADM
          */
         $adm = $this->db
-            ->table('rlv_users')
+            ->table('RLV_Users')
             ->where('Role_id', 2)
             ->where('status', 'ACTIVE')
             ->where('deleted_at', null)
@@ -95,7 +95,7 @@ class RLVDashboardRepository
          * GUA
          */
         $gua = $this->db
-            ->table('rlv_users')
+            ->table('RLV_Users')
             ->where('Role_id', 3)
             ->where('status', 'ACTIVE')
             ->where('deleted_at', null)
@@ -131,7 +131,7 @@ class RLVDashboardRepository
     ): array {
 
         return $this->db
-            ->table('rlv_audit_actions')
+            ->table('RLV_Audit_Actions')
             ->select('
                 Id_aud_action,
                 table_name,
@@ -183,26 +183,26 @@ public function activityTimeline(): array
 {
     return $this->db
 
-        ->table('rlv_users_sessions')
+        ->table('RLV_Users_Sessions')
 
         ->select("
-            rlv_users.username,
+            RLV_Users.username,
 
             ROUND(
                 SUM(
                     CASE
 
-                        WHEN rlv_users_sessions.logout_at IS NOT NULL
+                        WHEN RLV_Users_Sessions.logout_at IS NOT NULL
 
                         THEN TIMESTAMPDIFF(
                             MINUTE,
-                            rlv_users_sessions.login_at,
-                            rlv_users_sessions.logout_at
+                            RLV_Users_Sessions.login_at,
+                            RLV_Users_Sessions.logout_at
                         )
 
                         ELSE TIMESTAMPDIFF(
                             MINUTE,
-                            rlv_users_sessions.login_at,
+                            RLV_Users_Sessions.login_at,
                             NOW()
                         )
 
@@ -213,18 +213,18 @@ public function activityTimeline(): array
         ")
 
         ->join(
-            'rlv_users',
-            'rlv_users.Id_user =
-             rlv_users_sessions.Id_user'
+            'RLV_Users',
+            'RLV_Users.Id_user =
+             RLV_Users_Sessions.Id_user'
         )
 
         ->where(
-            'DATE(rlv_users_sessions.login_at)',
+            'DATE(RLV_Users_Sessions.login_at)',
             date('Y-m-d')
         )
 
         ->groupBy(
-            'rlv_users.username'
+            'RLV_Users.username'
         )
 
         ->having(

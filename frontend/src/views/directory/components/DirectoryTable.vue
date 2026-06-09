@@ -169,7 +169,7 @@
                             "
                         >
 
-                            Ver Detalle
+                            Detail View
 
                         </button>
 
